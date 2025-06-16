@@ -33,12 +33,12 @@ export const Hero = () => {
               src={cursorImage}
               height="200"
               width="200"
-              alt=""
+              alt="cursor"
               className="absolute right-[476px] top-[108px] hidden sm:inline"
             />
             <Image
               src={messageImage}
-              alt=""
+              alt="message"
               height="200"
               width="200"
               className="absolute top-[56px] left-[498px] hidden sm:inline"

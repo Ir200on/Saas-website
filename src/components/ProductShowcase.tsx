@@ -25,6 +25,7 @@ export const ProductShowcase = () => {
             one task at a time.
           </p>
         </div>
+
         <motion.div
           style={{
             opacity: opacity,

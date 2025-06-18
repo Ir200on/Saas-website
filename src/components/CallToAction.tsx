@@ -1,28 +1,51 @@
+"use client";
 import helixImage from "../assets/images/helix2.png";
 import emojiStarImage from "../assets/images/emojistar.png";
 import Image from "next/image";
+import { useScroll, useTransform } from "framer-motion";
+import { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 
 export const CallToAction = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end end"],
+  });
+
+  useEffect(() => {
+    scrollYProgress.on("change", (value) => console.log("value", value));
+  }, []);
+
+  const translateY = useTransform(scrollYProgress, [0, 1], [40, -40]);
   return (
-    <div className="bg-black text-white py-[72px] sm:py-24 text-center overflow-hidden">
+    <div
+      className="bg-black text-white py-[72px] sm:py-24 text-center overflow-hidden"
+      ref={containerRef}
+    >
       <div className="container max-w-xl relative mx-auto px-4">
         {/* emojiStar */}
-        <div className="absolute -top-24 left-[-200px] pointer-events-none hidden sm:block">
-          <Image
-            src={emojiStarImage}
-            alt="emoji star"
-            className="w-[clamp(200px,10vw,96px)]"
-          />
-        </div>
+        <motion.div style={{ translateY }}>
+          <div className="absolute -top-24 left-[-200px] pointer-events-none hidden sm:block">
+            <Image
+              src={emojiStarImage}
+              alt="emoji star"
+              className="w-[clamp(200px,10vw,96px)]"
+            />
+          </div>
+        </motion.div>
 
         {/* helix */}
-        <div className="absolute top-6 right-[-200px] pointer-events-none hidden sm:block">
-          <Image
-            src={helixImage}
-            alt="helix"
-            className="w-[clamp(200px,12vw,128px)]"
-          />
-        </div>
+        <motion.div style={{ translateY }}>
+          <div className="absolute top-6 right-[-200px] pointer-events-none hidden sm:block">
+            <Image
+              src={helixImage}
+              alt="helix"
+              className="w-[clamp(200px,12vw,128px)]"
+            />
+          </div>
+        </motion.div>
 
         <h2 className="font-bold text-5xl tracking-tighter sm:text-6xl mt-12">
           Get instant access

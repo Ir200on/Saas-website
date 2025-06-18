@@ -6,6 +6,7 @@ import celestialLogo from "../assets/images/celestial.png";
 import pulseLogo from "../assets/images/pulse.png";
 import apexLogo from "../assets/images/apex.png";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 const images = [
   { src: acmeLogo, alt: "Acme Logo" },
@@ -24,8 +25,17 @@ export const LogoTicker = () => {
           Trusted by the world&apos;s most innovative teams
         </h2>
 
-        <div className="overflow-hidden mt-9 before:content-[''] after:content-[''] before:absolute after:absolute before:h-full after:h-full before:w-5 after:w-5 relative after:right-0 before:left-0 before:top-0 after:top-0 before:bg-[linear-gradient(to_right,#000,rgb(0,0,0,0))] after:bg-[linear-gradient(to_left,#000,rgb(0,0,0,0))]">
-          <div className="flex lg:justify-center">
+        <div className="flex overflow-hidden mt-9 before:content-[''] after:content-[''] before:z-10 before:absolute after:absolute before:h-full after:h-full before:w-5 after:w-5 relative after:right-0 before:left-0 before:top-0 after:top-0 before:bg-[linear-gradient(to_right,#000,rgb(0,0,0,0))] after:bg-[linear-gradient(to_left,#000,rgb(0,0,0,0))]">
+          <motion.div
+            transition={{
+              duration: 10,
+              ease: "linear",
+              repeat: Infinity,
+            }}
+            initial={{ translate: 0 }}
+            animate={{ translate: "-50%" }}
+            className="flex lg:justify-center flex-none pr-16"
+          >
             <div className="flex gap-16">
               {images.map(({ src, alt }) => (
                 <Image
@@ -35,8 +45,16 @@ export const LogoTicker = () => {
                   className="flex-none h-8 w-auto"
                 />
               ))}
+              {images.map(({ src, alt }) => (
+                <Image
+                  key={alt}
+                  src={src}
+                  alt={alt}
+                  className="flex-none h-8 w-auto"
+                />
+              ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>

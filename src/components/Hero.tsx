@@ -1,7 +1,9 @@
+"use client";
 import ArrowWIcon from "../assets/icons/arrow-w.svg";
 import cursorImage from "../assets/images/cursor.png";
 import messageImage from "../assets/images/message.png";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export const Hero = () => {
   return (
@@ -29,20 +31,73 @@ export const Hero = () => {
               <br />
               at a Time
             </h1>
-            <Image
-              src={cursorImage}
-              height="200"
-              width="200"
-              alt="cursor"
+            <motion.div
+              className="absolute right-[476px] top-[108px] hidden sm:inline group"
+              drag
+              dragSnapToOrigin
+            >
+              <div className="relative w-[200px] h-[200px]">
+                <Image
+                  src={cursorImage}
+                  height="200"
+                  width="200"
+                  alt="cursor"
+                  className="max-w-none"
+                  draggable="false"
+                />
+                <span className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                  Drag me
+                </span>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="absolute top-[56px] left-[498px] hidden sm:inline group"
+              drag
+              dragSnapToOrigin
+            >
+              <div className="relative w-[200px] h-[200px]">
+                <Image
+                  src={messageImage}
+                  alt="message"
+                  height="200"
+                  width="200"
+                  className="max-w-none"
+                  draggable="false"
+                />
+                <span className="absolute bottom-2 left-1/2 -translate-x-1/2 bg-black text-white text-sm px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition duration-300 pointer-events-none">
+                  Drag me
+                </span>
+              </div>
+            </motion.div>
+            {/* <motion.div
               className="absolute right-[476px] top-[108px] hidden sm:inline"
-            />
-            <Image
-              src={messageImage}
-              alt="message"
-              height="200"
-              width="200"
+              drag
+              dragSnapToOrigin
+            >
+              <Image
+                src={cursorImage}
+                height="200"
+                width="200"
+                alt="cursor"
+                className="max-w-none"
+                draggable="false"
+              />
+            </motion.div>
+            <motion.div
               className="absolute top-[56px] left-[498px] hidden sm:inline"
-            />
+              drag
+              dragSnapToOrigin
+            >
+              <Image
+                src={messageImage}
+                alt="message"
+                height="200"
+                width="200"
+                className="max-w-none"
+                draggable="false"
+              />
+            </motion.div> */}
           </div>
         </div>
         <div className="flex justify-center">
